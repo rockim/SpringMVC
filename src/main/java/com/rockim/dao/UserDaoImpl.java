@@ -27,7 +27,15 @@ public class UserDaoImpl implements UserDao {
         String sql = "SELECT * FROM users WHERE username='" + login.getUsername() + "'";
 
         List<User> users = jdbcTemplate.query(sql,new UserMapper());
-        return users.size() > 0 ? users.get(0) : null;
+        if (users.size()>0){
+            if(users.get(0).getPassword().equals(login.getPassword())){
+                return users.get(0);
+            }
+
+        }else{
+            return null;
+        }
+        return null;
     }
 
     class UserMapper implements RowMapper<User> {
