@@ -1,7 +1,7 @@
-package com.rockim.service;
+package com.rockim.login.service;
 
-import com.rockim.model.Login;
-import com.rockim.model.User;
+import com.rockim.login.model.Login;
+import com.rockim.login.model.User;
 
 public interface UserService {
     int register(User user);

@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: rockim
@@ -23,6 +24,8 @@
     </tr>
     <tr>
         <td><a href="/SpringMVC_war_exploded/home.jsp">Home</a>
+        </td>
+        <td><a href="board">Board</a>
         </td>
     </tr>
 </table>

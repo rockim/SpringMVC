@@ -8,10 +8,13 @@
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <import resource="classpath:config/user-beans.xml"/>
-    <context:component-scan base-package="com.rockim"/>
+    <import resource="classpath:config/db-beans.xml"/>
+    <context:component-scan base-package="com.rockim.login"/>
     <context:annotation-config/>
 
+    <import resource="classpath:config/db-beans.xml"/>
+    <context:component-scan base-package="com.rockim.board"/>
+    <context:annotation-config/>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/jsp/" />
         <property name="suffix" value=".jsp" />

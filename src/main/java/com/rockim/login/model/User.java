@@ -1,4 +1,4 @@
-package com.rockim.model;
+package com.rockim.login.model;
 
 public class User {
     private String username;

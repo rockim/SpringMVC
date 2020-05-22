@@ -1,4 +1,9 @@
 package com.rockim.board.dao;
 
-public class BoardDao {
+import com.rockim.board.model.Board;
+
+import java.util.List;
+
+public interface BoardDao {
+    public List<Board> listAll() throws Exception;
 }

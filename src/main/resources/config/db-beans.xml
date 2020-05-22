@@ -14,7 +14,10 @@
         <property name="username" value="root" />
         <property name="password" value="rla123" />
     </bean>
+
+
     <context:component-scan base-package="com.rockim.board"/>
     <context:annotation-config/>
-    <bean id = "datasource" class = "org.springframework.jdbc.datasource.DriverManagerDataSource"
+    <bean id="boardService" class="com.rockim.board.service.BoardServiceImpl"/>
+    <bean id = "boardDao" class ="com.rockim.board.dao.BoardDaoImpl"/>
 </beans>

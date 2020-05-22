@@ -1,8 +1,8 @@
-package com.rockim.service;
+package com.rockim.login.service;
 
-import com.rockim.dao.UserDao;
-import com.rockim.model.Login;
-import com.rockim.model.User;
+import com.rockim.login.dao.UserDao;
+import com.rockim.login.model.Login;
+import com.rockim.login.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class UserServiceImpl implements UserService{

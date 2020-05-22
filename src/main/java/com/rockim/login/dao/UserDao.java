@@ -1,7 +1,7 @@
-package com.rockim.dao;
+package com.rockim.login.dao;
 
-import com.rockim.model.Login;
-import com.rockim.model.User;
+import com.rockim.login.model.Login;
+import com.rockim.login.model.User;
 
 public interface UserDao {
     int register(User user);

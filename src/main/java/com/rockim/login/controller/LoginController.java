@@ -1,8 +1,8 @@
-package com.rockim.controller;
+package com.rockim.login.controller;
 
-import com.rockim.model.Login;
-import com.rockim.model.User;
-import com.rockim.service.UserService;
+import com.rockim.login.model.Login;
+import com.rockim.login.model.User;
+import com.rockim.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
