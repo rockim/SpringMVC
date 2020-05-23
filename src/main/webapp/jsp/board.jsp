@@ -14,6 +14,7 @@ Created by IntelliJ IDEA.
 </head>
 <body>
 <h2>게시글 목록</h2>
+<td><a href="write">글쓰기</a></td>
 <table border="1" width="600px">
     <tr>
         <th>번호</th>
@@ -26,7 +27,7 @@ Created by IntelliJ IDEA.
     <c:forEach var="board" items="${list}">
         <tr>
             <td>${board.bno}</td>
-            <td>${board.title}</td>
+            <td><a href = "view?bno=${board.bno}">${board.title}</a></td>
             <td>${board.content}</td>
             <td>${board.regDate}</td>
             <td>${board.writer}</td>
