@@ -11,53 +11,27 @@
 <html>
 <head>
     <title>게시글 작성</title>
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $("#btnSave").click(function(){
-                var title = $("#title").val();
-                var content = $("#content").val();
-                var writer = $("#writer").val();
-                if(title == ""){
-                    alert("제목을 입력하세요");
-                    document.form1.title.focus();
-                    return;
-                }
-                if(content ==""){
-                    alert("내용을 입력하세요");
-                    document.form1.content.focus();
-                    return;
-                }
-                if(writer ==""){
-                    alert("이름을 입력하세요");
-                    document.form1.content.focus();
-                    return;
-                }
-                document.form1.submit();
-            });
-        });
-    </script>
 </head>
 <body>
-<h2>게시글 보기</h2>
-<form:form id ="writerForm" method = "post" action="insert">
+<h2>게시글 작</h2>
+<form:form id ="writerForm" modelAttribute="board" method = "post" action="writeProcess">
 
     <div>
-        제목
-        <input name = "title" id = title" size ="80" placeholder="제목을 입력해주세요">
+        <form:label path="title">제목</form:label>
+        <form:input path="title" name="title" id = "title" size="80"/>
     </div>
     <div>
-        내용
-        <textarea name = "content" id="content" rows="4" cols="80" placeholder="내용을 입력해주세요">
+        <form:label path="content">내용</form:label>
+        <form:textarea path="content" name="content" id = "content" rows="4" cols="80"/>
         </textarea>
     </div>
     <div>
-        이름
-        <input name="writer" id="writer"  placeholder="이름을 입력해주세요">
+        <form:label path="writer">이름</form:label>
+        <form:input path="writer" name="write" id="write"/>
     </div>
-    <div style="width: 650px; text-align: center;">
-        <td><a href="insert">확인</a></td>
-        <button type = "reset">취소</button>
+    <div>
+        <form:button value="write" name="write">확인</form:button>
+        <a href="board">취소</a>
     </div>
 </form:form>
 </body>

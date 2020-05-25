@@ -1,5 +1,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: rockim
@@ -10,44 +11,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>게시글 작성</title>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#btnDelete").click(function(){
-                if(confirm("삭제정말로 하실건가요?")) {
-                    document.form1.action = "delete";
-                    document.form1.submit();
-                }
-            });
-
-            $('#btnUpdate').click(function(){
-                var title = $("#title").val();
-                var content = $("#content").val();
-                var writer = $("#writer").val();
-                if(title == ""){
-                    alert("제목을 입력하세요");
-                    document.form1.title.focus();
-                    return;
-                }
-                if(content ==""){
-                    alert("내용을 입력하세요");
-                    document.form1.content.focus();
-                    return;
-                }
-                if(writer ==""){
-                    alert("이름을 입력하세요");
-                    document.form1.content.focus();
-                    return;
-                }
-                document.form1.action="update"
-                document.form1.submit();
-            });
-        });
-    </script>
+    <title>게시글 보기</title>
 </head>
 <body>
 <h2>게시글 보기</h2>
-<form name ="form1" ,method = "post">
+<form:form id="viewForm" modelAttribute="board" method="post" action="viewProcess">
     <div>
         작성일자 : <fmt:formatDate value="${dto.regDate}" pattern="yyyy-MM-dd a HH:mm:ss"/>
     </div>
@@ -55,27 +23,27 @@
         조회수 : ${dto.viewCnt}
     </div>
     <div>
-        제목
-        <input name = "title" id = title" size ="80" value="${dto.title}" placeholder="제목을 입력해주세요">
+        <form:label path="title">제목</form:label>
+        <form:input path="title" name="title" id = "title" size="80" value="${dto.title}" placeholder="제목을 일렵해주세요"/>
     </div>
     <div>
         내용
-        <textarea name = "content" id="content" rows="4" cols="80" placeholder="내용을 입력해주세요">
-            ${dto.content}
-        </textarea>
+        <form:label path="content">내용</form:label>
+        <form:input path="content" name="content" id = "content" size="200" value="${dto.content}"/>
     </div>
     <div>
-        이름
-        <input name="writer" id="writer" value="${dto.writer}" placeholder="이름을 입력해주세요">
+        <form:label path="writer">이름</form:label>
+        <form:input path="writer" name="writer" id = "title" value="${dto.writer}" placeholder="이름을 일렵해주세요"/>
     </div>
-    <div style="width: 650px; text-align: center;">
-        <input type ="hidden" name="bno" value="${dto.bno}">
-
-        <td><a href="update">수정</a>
-            <a href="delete">삭제</a>
+    <div>
+        <td>
+            <form:hidden path="bno" value="${dto.bno}"/>
+            <form:button value="update" name="update">수정</form:button>
+            <form:button value="delete" name="update">삭제</form:button>
         </td>
     </div>
-</form>
+</form:form>
+
 
 </body>
 </html>

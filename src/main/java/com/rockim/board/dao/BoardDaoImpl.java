@@ -23,7 +23,7 @@ public class BoardDaoImpl implements BoardDao{
         return boards;
     }
     public void create(Board board) throws Exception{
-        String sql = "INSERT INTO db_board.board(bno,title,content,writer) VALUES((SELECT NVL(MAX(bno)+1, 1)FROM db_board.board),'"+board.getTitle()+"','"+board.getContent()+"','"+board.getWriter()+"'";
+        String sql = "INSERT INTO db_board.board(bno,title,content,writer) VALUES((SELECT IFNULL(MAX(bno)+1, 1) FROM db_board.board a),'"+board.getTitle()+"','"+board.getContent()+"','"+board.getWriter()+"')";
         jdbcTemplate.update(sql);
     }
     public void update(Board board) throws Exception{

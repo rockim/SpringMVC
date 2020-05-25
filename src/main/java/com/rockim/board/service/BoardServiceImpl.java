@@ -31,6 +31,9 @@ public class BoardServiceImpl implements BoardService {
         board.setTitle(title);
         board.setContent(content);
         board.setWriter(writer);
+        System.out.println(
+                "title: "+title+" writer: "+writer+" content : "+content
+        );
         boardDao.create(board);
     }
 

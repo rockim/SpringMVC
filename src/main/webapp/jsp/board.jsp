@@ -15,11 +15,11 @@ Created by IntelliJ IDEA.
 <body>
 <h2>게시글 목록</h2>
 <td><a href="write">글쓰기</a></td>
-<table border="1" width="600px">
+<table border="1" width="700px">
     <tr>
         <th>번호</th>
         <th>제목</th>
-        <th>내</th>
+        <th>내용</th>
         <th>작성일</th>
         <th>작성자</th>
         <th>조회수</th>

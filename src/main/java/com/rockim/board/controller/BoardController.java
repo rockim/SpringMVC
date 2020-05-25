@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -29,36 +31,37 @@ public class BoardController {
         return mav;
     }
 
-    @RequestMapping(value="write",method = RequestMethod.GET)
-    public String write(){
-        return "write";
+    @RequestMapping(value="/write",method = RequestMethod.GET)
+    public ModelAndView showWrite(HttpServletRequest request, HttpServletResponse response){
+        ModelAndView mav = new ModelAndView("write");
+        mav.addObject("board", new Board());
+        return mav;
     }
 
 
-    @RequestMapping(value="insert",method={RequestMethod.GET,RequestMethod.POST})
-    public String insert(@ModelAttribute Board board) throws Exception{
+    @RequestMapping(value="writeProcess",method={RequestMethod.POST})
+    public String addBoard(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("board") Board board) throws Exception{
         boardService.create(board);
-        return "redirect:/board";
+        return "redirect:board";
     }
 
-    @RequestMapping(value = "view",method = RequestMethod.GET)
-    public ModelAndView view(@RequestParam int bno, HttpSession session) throws  Exception{
+    @RequestMapping(value = "/view",method = RequestMethod.GET)
+    public ModelAndView view(HttpServletRequest request, HttpServletResponse response,@RequestParam int bno, HttpSession session) throws  Exception{
         boardService.increaseViewcnt(bno, session);
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("view");
+        ModelAndView mav = new ModelAndView("view");
+        mav.addObject("board", new Board());
         mav.addObject("dto",boardService.read(bno));
         return mav;
     }
 
-    @RequestMapping(value="update",method = {RequestMethod.GET,RequestMethod.POST})
-    public String update(@ModelAttribute Board board) throws Exception{
-        boardService.update(board);
-        return "redirect:board";
-    }
-
-    @RequestMapping("delete")
-    public String delete(@RequestParam int bno) throws Exception{
-        boardService.delete(bno);
+    @RequestMapping(value="viewProcess",method = RequestMethod.POST)
+    public String update(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("board") Board board, @RequestParam int  bno,@RequestParam("update") String action) throws Exception{
+        if(action.equals("update")) {
+            boardService.update(board);
+        }
+        else{
+            boardService.delete(bno);
+        }
         return "redirect:board";
     }
 }
